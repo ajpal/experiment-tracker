@@ -1,7 +1,6 @@
 import React from "react";
-import experiments from "./data/test.json";
 
-export default function ExperimentTable() {
+export default function UploadButton() {
   return (
     <div>
       <button style={{ marginBottom: 20 }}>Upload New Data!</button>

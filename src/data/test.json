@@ -14,7 +14,7 @@
       "command": {
         "domain": "bool",
         "iters": "2",
-        "prior-rules": "iter1.rules"
+        "priorRules": "iter1.rules"
       },
       "rules": "iter2.rules",
       "log": "iter2.log"
@@ -41,7 +41,7 @@
           "commit": "#3960f00",
           "spec": "bool.spec"
         },
-        "prior-rules": "nops1.rules"
+        "priorRules": "nops1.rules"
       },
       "rules": "nops2.rules",
       "log": "nops2.log"
