@@ -1,0 +1,50 @@
+{
+  "experiments": [
+    {
+      "commit": "#fc7a69",
+      "command": {
+        "domain": "bool",
+        "iters": "1"
+      },
+      "rules": "iter1.rules",
+      "log": "iter1.log"
+    },
+    {
+      "commit": "#fc7a69",
+      "command": {
+        "domain": "bool",
+        "iters": "2",
+        "prior-rules": "iter1.rules"
+      },
+      "rules": "iter2.rules",
+      "log": "iter2.log"
+    },
+    {
+      "commit": "#fc7a69",
+      "command": {
+        "domain": "bool",
+        "workload": {
+          "name": "nops1.terms",
+          "commit": "#3960f00",
+          "spec": "bool.spec"
+        }
+      },
+      "rules": "nops1.rules",
+      "log": "nops1.log"
+    },
+    {
+      "commit": "#fc7a69",
+      "command": {
+        "domain": "bool",
+        "workload": {
+          "name": "nops2.terms",
+          "commit": "#3960f00",
+          "spec": "bool.spec"
+        },
+        "prior-rules": "nops1.rules"
+      },
+      "rules": "nops2.rules",
+      "log": "nops2.log"
+    }
+  ]
+}
