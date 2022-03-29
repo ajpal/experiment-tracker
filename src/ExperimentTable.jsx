@@ -1,6 +1,9 @@
 import React from "react";
 import experiments from "./data/test.json";
 
+import CommitLink from "./CommitLink";
+import WorkloadInfo from "./WorkloadInfo";
+
 export default function ExperimentTable() {
   return (
     <div>
@@ -20,20 +23,18 @@ export default function ExperimentTable() {
           </tr>
           {experiments.experiments.map((experiment, i) => (
             <tr key={i}>
-              <td>{experiment.commit}</td>
+              <td>
+                <CommitLink repo="ruler" commit={experiment.commit} />
+              </td>
               <td>{experiment.command.domain}</td>
               <td>{experiment.command.iters}</td>
               <td>
                 {experiment.command.workload && (
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>{experiment.command.workload.commit}</td>
-                        <td>{experiment.command.workload.spec}</td>
-                        <td>{experiment.command.workload.name}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <WorkloadInfo
+                    commit={experiment.command.workload.commit}
+                    spec={experiment.command.workload.spec}
+                    name={experiment.command.workload.name}
+                  />
                 )}
               </td>
               <td>{experiment.command["prior-rules"]}</td>
