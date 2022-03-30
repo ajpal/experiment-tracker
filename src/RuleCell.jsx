@@ -9,13 +9,9 @@ export default function RuleCell(props) {
   const icon = isOpen ? "fa fa-angle-down" : "fa fa-angle-right";
 
   return (
-    <div>
+    <div style={{ cursor: "pointer" }} onClick={() => setIsOpen(!isOpen)}>
       {filename}
-      <i
-        onClick={() => setIsOpen(!isOpen)}
-        style={styles.icon}
-        className={icon}
-      ></i>
+      <i style={styles.icon} className={icon}></i>
       {isOpen && <RuleList filename={filename} />}
     </div>
   );
