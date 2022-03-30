@@ -1,47 +1,70 @@
 import React from "react";
+import { useTable } from "react-table";
 import experiments from "./data/test.json";
-
 import CommitLink from "./CommitLink";
-import WorkloadInfo from "./WorkloadInfo";
 
-export default function ExperimentTable() {
+export default function ExperimentTable(props) {
+  const data = React.useMemo(() => {
+    const rows = [];
+    experiments.experiments.forEach((exp, i) => {
+      rows.push({
+        id: i,
+        commit: exp.commit,
+        domain: exp.command.domain,
+      });
+    });
+    return rows;
+  }, []);
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Commit",
+        accessor: "commit",
+        Cell: CommitLink,
+        getProps: () => ({
+          repo: "ruler",
+        }),
+      },
+      {
+        Header: "Domain",
+        accessor: "domain",
+      },
+    ],
+    []
+  );
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns, data });
+
   return (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>Commit</th>
-            <th>Domain</th>
-            <th colSpan="3">Params</th>
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map((headerGroup) => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map((column) => (
+              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+            ))}
           </tr>
-          <tr>
-            <th></th>
-            <th></th>
-            <th>Iters</th>
-            <th>Workload</th>
-            <th>Prior Rules</th>
-          </tr>
-          {experiments.experiments.map((experiment, i) => (
-            <tr key={i}>
-              <td>
-                <CommitLink repo="ruler" commit={experiment.commit} />
-              </td>
-              <td>{experiment.command.domain}</td>
-              <td>{experiment.command.iters}</td>
-              <td>
-                {experiment.command.workload && (
-                  <WorkloadInfo
-                    commit={experiment.command.workload.commit}
-                    spec={experiment.command.workload.spec}
-                    name={experiment.command.workload.name}
-                  />
-                )}
-              </td>
-              <td>{experiment.command["prior-rules"]}</td>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell) => {
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              })}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          );
+        })}
+      </tbody>
+    </table>
   );
 }
