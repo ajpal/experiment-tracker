@@ -16,6 +16,7 @@ export default function ExperimentTable(props) {
         domain: exp.command.domain,
         iters: exp.command.iters || "-",
         workload: exp.command.workload,
+        priorRules: exp.command.priorRules,
         rules: exp.rules,
         log: exp.log,
       });
@@ -56,6 +57,12 @@ export default function ExperimentTable(props) {
             <div>-</div>
           );
         },
+      },
+      {
+        Header: "Prior Rules",
+        accessor: "priorRules",
+        Cell: (props) =>
+          props.cell.value ? <RuleCell filename={props.cell.value} /> : <div />,
       },
       {
         Header: "Rules",
