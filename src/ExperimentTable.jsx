@@ -2,6 +2,7 @@ import React from "react";
 import { useTable } from "react-table";
 import experiments from "./data/test.json";
 import CommitLink from "./CommitLink";
+import WorkloadInfo from "./WorkloadInfo";
 
 export default function ExperimentTable(props) {
   const data = React.useMemo(() => {
@@ -11,6 +12,10 @@ export default function ExperimentTable(props) {
         id: i,
         commit: exp.commit,
         domain: exp.command.domain,
+        iters: exp.command.iters || "-",
+        workload: exp.command.workload,
+        rules: exp.rules,
+        log: exp.log,
       });
     });
     return rows;
@@ -21,7 +26,7 @@ export default function ExperimentTable(props) {
       {
         Header: "Commit",
         accessor: "commit",
-        Cell: CommitLink,
+        Cell: (props) => <CommitLink repo="ruler" commit={props.cell.value} />,
         getProps: () => ({
           repo: "ruler",
         }),
@@ -29,6 +34,34 @@ export default function ExperimentTable(props) {
       {
         Header: "Domain",
         accessor: "domain",
+      },
+      {
+        Header: "Iters",
+        accessor: "iters",
+      },
+      {
+        Header: "Workload",
+        accessor: "workload",
+        Cell: (props) => {
+          const workload = props.cell.value;
+          return props.cell.value ? (
+            <WorkloadInfo
+              commit={workload.commit}
+              name={workload.name}
+              spec={workload.spec}
+            />
+          ) : (
+            <div>-</div>
+          );
+        },
+      },
+      {
+        Header: "Rules",
+        accessor: "rules",
+      },
+      {
+        Header: "Log",
+        accessor: "log",
       },
     ],
     []
