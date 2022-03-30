@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTable } from "react-table";
 import experiments from "./data/test.json";
 import CommitLink from "./CommitLink";
+import RuleCell from "./RuleCell";
 import WorkloadInfo from "./WorkloadInfo";
 
 export default function ExperimentTable(props) {
@@ -58,6 +59,7 @@ export default function ExperimentTable(props) {
       {
         Header: "Rules",
         accessor: "rules",
+        Cell: (props) => <RuleCell filename={props.cell.value} />,
       },
       {
         Header: "Log",

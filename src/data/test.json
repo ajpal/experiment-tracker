@@ -6,7 +6,7 @@
         "domain": "bool",
         "iters": "1"
       },
-      "rules": "iter1.rules",
+      "rules": "iter1.json",
       "log": "iter1.log"
     },
     {
@@ -14,9 +14,9 @@
       "command": {
         "domain": "bool",
         "iters": "2",
-        "priorRules": "iter1.rules"
+        "priorRules": "iter1.json"
       },
-      "rules": "iter2.rules",
+      "rules": "iter2.json",
       "log": "iter2.log"
     },
     {
@@ -29,7 +29,7 @@
           "spec": "bool.spec"
         }
       },
-      "rules": "nops1.rules",
+      "rules": "nops1.json",
       "log": "nops1.log"
     },
     {
@@ -41,9 +41,9 @@
           "commit": "#3960f00",
           "spec": "bool.spec"
         },
-        "priorRules": "nops1.rules"
+        "priorRules": "nops1.json"
       },
-      "rules": "nops2.rules",
+      "rules": "nops2.json",
       "log": "nops2.log"
     }
   ]
