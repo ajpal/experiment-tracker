@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTable } from "react-table";
 import experiments from "./data/test.json";
 import CommitLink from "./CommitLink";
+import LogCell from "./LogCell";
 import RuleCell from "./RuleCell";
 import WorkloadInfo from "./WorkloadInfo";
 
@@ -64,6 +65,7 @@ export default function ExperimentTable(props) {
       {
         Header: "Log",
         accessor: "log",
+        Cell: (props) => <LogCell filename={props.cell.value} />,
       },
     ],
     []

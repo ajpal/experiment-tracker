@@ -1,4 +1,4 @@
-[WARN  ruler] [[[ Iteration 1 ]]]
+export const log = `[WARN  ruler] [[[ Iteration 1 ]]]
 [WARN  ruler] Made layer of 66 nodes
 [WARN  ruler] Starting chunk of 66 terms
 [WARN  ruler] start of run_chunk : Egraph size: 59
@@ -39,3 +39,4 @@
   [2, 0, -5, -9, -3]   (^ ?a (& ?a ?b)) <=> (& ?a (~ ?b))
   [2, 0, -5, -9, -4]   (^ ?a (| ?a ?b)) <=> (& ?b (~ ?a))
 Learned 9 rules in 0.026655296 using 10 old rules.
+`;

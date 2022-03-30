@@ -1,4 +1,4 @@
-[WARN  ruler] Enumerated workload of 2480 terms
+export const log = `[WARN  ruler] Enumerated workload of 2480 terms
 [WARN  ruler] Starting chunk of 2480 terms
 [WARN  ruler] start of run_chunk : Egraph size: 1517
 [WARN  ruler] running eqsat with 10 rules
@@ -28,3 +28,4 @@
   [2, 0, -5, -9, -3]   (^ ?a (& ?a ?b)) <=> (& ?a (~ ?b))
   [2, 0, -5, -9, -4]   (^ ?a (| ?a ?b)) <=> (& ?b (~ ?a))
 Learned 9 rules in 0.038979082 using 10 old rules.
+`;
