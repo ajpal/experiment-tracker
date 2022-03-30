@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTable } from "react-table";
 import experiments from "./data/test.json";
 import CommitLink from "./CommitLink";

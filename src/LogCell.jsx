@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import ModalBody from "react-bootstrap/ModalBody";
 
 export default function LogCell(props) {
   const { filename } = props;
